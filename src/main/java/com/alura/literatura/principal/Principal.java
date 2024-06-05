@@ -166,7 +166,7 @@ public class Principal {
         for (Book book : books) {
             if (book.getAuthors() != null && !book.getAuthors().isEmpty()) {
                 for (Author author : book.getAuthors()) {
-                    if (author.getDeathYear() == null || author.getDeathYear() > year) {
+                    if (author.getBirthYear() <= year && (author.getDeathYear() == null || author.getDeathYear() > year)) {
                         System.out.println("------------------------------");
                         System.out.println("Nombre del Autor: " + author.getName());
                         System.out.println("Año de Nacimiento: " + author.getBirthYear());
@@ -177,6 +177,7 @@ public class Principal {
             }
         }
     }
+
 
     private void clearLibrary() {
         bookRepository.deleteAll();
